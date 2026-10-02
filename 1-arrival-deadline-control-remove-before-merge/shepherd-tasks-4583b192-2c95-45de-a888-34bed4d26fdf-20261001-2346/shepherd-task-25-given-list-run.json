@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "shepherdTaskVersion": "1.0.4",
+  "campaignCreatedWithVersion": "1.0.4",
+  "stageOutcomeProtocolVersion": 1,
+  "campaignId": "4583b192-2c95-45de-a888-34bed4d26fdf",
+  "campaignMetadataDirectory": "1-arrival-deadline-control-remove-before-merge",
+  "repository": "edburns/dd-3072166-tricked-out-cargotracker-run-01",
+  "baseBranch": "edburns/dd-3016202-cargotracker-devoxx-be-2026-add-feature-control",
+  "lessonPropagation": "off",
+  "taskIssues": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "startedAt": "2026-10-01T23:46:21Z",
+  "completedAt": "2026-10-02T00:21:43Z",
+  "exitCode": 1,
+  "status": "failed"
+}
