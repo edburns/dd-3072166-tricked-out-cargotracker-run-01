@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.*;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.apache.commons.lang3.time.DateUtils;
 import org.eclipse.cargotracker.application.internal.DefaultBookingService;
 import org.eclipse.cargotracker.application.util.DateUtil;
@@ -48,6 +50,7 @@ public class BookingServiceTest {
 
   @Inject private BookingService bookingService;
   @Inject private CargoRepository cargoRepository;
+  @PersistenceContext private EntityManager entityManager;
 
   private static TrackingId trackingId;
   private static List<Itinerary> candidates;
@@ -220,7 +223,11 @@ public class BookingServiceTest {
 
     bookingService.changeDeadline(trackingId, newDeadline);
 
-    Cargo cargo = cargoRepository.find(trackingId);
+    Cargo cargo =
+        entityManager
+            .createNamedQuery("Cargo.findByTrackingId", Cargo.class)
+            .setParameter("trackingId", trackingId)
+            .getSingleResult();
 
     assertEquals(SampleLocations.CHICAGO, cargo.getOrigin());
     assertEquals(SampleLocations.HELSINKI, cargo.getRouteSpecification().getDestination());
